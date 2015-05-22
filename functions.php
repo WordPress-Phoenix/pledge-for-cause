@@ -11,6 +11,7 @@ class saveachristmas{
 		include_once(__DIR__.'/inc/pledge-option-custom-post-type.inc.php');
 		include_once(__DIR__.'/inc/pledge-custom-post-type.inc.php');
 		include_once(__DIR__.'/inc/site-options.inc.php');
+        include_once(__DIR__.'/inc/site-customizer.inc.php');
 		include_once(__DIR__.'/inc/shortcodes.inc.php');
         include_once(__DIR__.'/inc/user-capabilities.inc.php');
 		if(class_exists('sc_shortcodes')) {

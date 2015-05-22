@@ -52,7 +52,7 @@ $pledges = get_posts( $arguments );
 ?>
 
     <div class="container">
-		<h3 class="campaign-widget-title"><?php echo get_custom_option('pledge_options_title');?></h3>
+		<h3 class="campaign-widget-title"><?php echo get_theme_mod('sc_pledges_header_text');?></h3>
 
 		<div class="campaignify-pledge-boxes campaignify-pledge-boxes-4 expired">
 

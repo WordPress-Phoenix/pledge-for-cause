@@ -15,18 +15,18 @@
 
 							<?php get_template_part('parts/content', 'pledges.part');?>
 				</section>
-				<section id="campaign_letter" class="campaign-widget widget_campaignify_campaign_content arrowed">
-					<div class="container">
-						<?php
-						get_template_part('parts/content', 'campaign-letter.part');
-						?>
-					</div>
-				</section>
+
+                <?php if ( get_theme_mod( 'sc_font_selector' ) == 1 ) : // show campaign letter or not?>
+                    <section id="campaign_letter" class="campaign-widget widget_campaignify_campaign_content arrowed">
+                        <div class="container">
+                            <?php
+                            get_template_part('parts/content', 'campaign-letter.part');
+                            ?>
+                        </div>
+                    </section>
+                <?php endif?>
 
 			</div>
-			<!-- #content -->
 		</div>
-		<!-- #primary -->
-	</div><!-- #main -->
-
+	</div>
 <?php get_footer(); ?>

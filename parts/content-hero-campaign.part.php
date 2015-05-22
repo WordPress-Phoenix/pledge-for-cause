@@ -97,7 +97,7 @@ $total_perc_funded = floor(($total / $goal) * 100); //the percentage of funding 
                 <div class="donation-progress" style="width: <?php if($total_perc_funded > 100){ echo '100';} else{ echo $total_perc_funded;} ?>%"></div>
             </div>
             <div class="donation-donate">
-                <a href="#" class="button button-primary contribute <?php echo $modal_css_class; ?>"><?php echo get_custom_option('site_featured_hero_button'); ?></a>
+                <a href="#" class="button button-primary contribute <?php echo $modal_css_class; ?>"><?php echo get_theme_mod('sc_hero_button'); ?></a>
             </div>
 
             <div class="donation-share">
@@ -162,7 +162,7 @@ $total_perc_funded = floor(($total / $goal) * 100); //the percentage of funding 
             <ul class="slides">
                 <li class="campaign-hero-slider-item">
                     <div class="campaign-hero-slider-info">
-                        <h2 class="campaign-hero-slider-title animated fadeInDown"><?php echo get_custom_option('site_featured_hero_title'); ?></h2>
+                        <h2 class="campaign-hero-slider-title animated fadeInDown"><?php echo get_theme_mod('sc_hero_header_text'); ?></h2>
 
                         <p class="campaign-hero-slider-desc animated fadeInDown"></p>
                     </div>
