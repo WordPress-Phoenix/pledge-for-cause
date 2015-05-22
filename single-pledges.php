@@ -1,4 +1,13 @@
-<?php get_header();?>
+<?php
+//add_action( 'template_redirect', 'redirect' );
+//    function redirect (){
+    if(! is_user_logged_in() )
+    {
+        wp_redirect( home_url() );
+        exit();
+    } else {
+
+get_header();?>
 
     <p><strong>Name:</strong> <?php the_title(); ?></p>
 
@@ -11,4 +20,8 @@
     <strong>Campaign ID:</strong><?php echo $donation_id[0]; ?>
 
 
-<?php get_footer(); ?>
+<?php get_footer();
+
+
+//    }
+}
