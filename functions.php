@@ -64,3 +64,15 @@ class saveachristmas{
 
 } //end of saveachristmas class
 $sc_theme = new saveachristmas();
+
+
+// setting up cron and the functions
+function update_fully_booked() {
+	if (time() >= strtotime($end_date)) {
+		update_post_meta(get_the_ID(),'fully_booked',1);
+	}
+}
+add_action( 'fully_booked_cron',  'update_fully_booked' );
+
+wp_schedule_event( time(), 'daily', 'fully_booked_cron' );
+
