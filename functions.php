@@ -67,13 +67,23 @@ $sc_theme = new saveachristmas();
 
 
 // setting up cron and the functions
+//variable declarations
+$campaign_options = get_post_meta(get_the_ID(), 'campaign_options', true);
+$end_date = $campaign_options['end_date'];
+$fully_booked = $campaign_options['fully_booked'];
+
+// actual logic of the cron
 function update_fully_booked() {
 	if (time() >= strtotime($end_date)) {
-		update_post_meta(get_the_ID(),'fully_booked',1);
+		if (!$fully_booked == 1) {
+			update_post_meta( get_the_ID(), $fully_booked , 1 );
+		}
 	}
 }
+//action and hook
 add_action( 'fully_booked_cron',  'update_fully_booked' );
 
+//if this event is already scheduled, dont schedule again, if not, schedule.
 if( !wp_next_scheduled( 'fully_booked_cron' ) ) {
 	wp_schedule_event( time(), 'daily', 'fully_booked_cron' );
 }
