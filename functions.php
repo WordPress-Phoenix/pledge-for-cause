@@ -74,5 +74,7 @@ function update_fully_booked() {
 }
 add_action( 'fully_booked_cron',  'update_fully_booked' );
 
-wp_schedule_event( time(), 'daily', 'fully_booked_cron' );
+if( !wp_next_scheduled( 'fully_booked_cron' ) ) {
+	wp_schedule_event( time(), 'daily', 'fully_booked_cron' );
+}
 
