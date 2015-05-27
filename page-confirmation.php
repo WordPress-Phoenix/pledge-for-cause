@@ -12,7 +12,7 @@ get_header(); ?>
 	<div class="container">
 		<div id="primary" class="content-area">
 			<div id="content" class="site-content" role="main">
-				<!-- <!-- <?php get_template_part('parts/content','default.part'); ?> --> -->
+				<!-- <!-- <?php get_template_part('parts/content','default.part'); ?> -->
 
 				<!-- #post -->
 				<div id="comments" class="comments-area">
@@ -26,7 +26,7 @@ get_header(); ?>
 		</div>
 		<!-- #primary -->
 
-		<?php get_sidebar('page'); ?>
+		<!-- <?php get_sidebar('page'); ?> -->
 		<!-- #tertiary -->    </div>
 
 
