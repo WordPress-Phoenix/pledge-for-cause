@@ -6,6 +6,9 @@ function sc_customizer($wp_customize){
     $wp_customize->add_section('sc_text_section', array(
         'title' => 'Text',
     ));
+    $wp_customize->add_section('sc_appearance_section', array(
+        'title' => 'Appearance',
+    ));
 
     //Add Settings
     $wp_customize->add_setting('sc_font_selector', array(
@@ -20,7 +23,8 @@ function sc_customizer($wp_customize){
     $wp_customize->add_setting('sc_pledges_header_text', array(
         'default' => 'go to customizer to change this text'
     ));
-
+    $wp_customize->add_setting('sc_background_image_selector'
+    );
 
     //Add Controls
     $wp_customize->add_control('sc_font_selector', array(
@@ -43,4 +47,9 @@ function sc_customizer($wp_customize){
         'section' => 'sc_text_section',
         'type' => 'text'
     ));
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'sc_background_image_selector', array(
+        'label'    => 'Background Image',
+        'section'  => 'sc_appearance_section',
+        'settings' => 'sc_background_image_selector',
+    ) ) );
 }
