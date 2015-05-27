@@ -75,7 +75,7 @@ $fully_booked = $campaign_options['fully_booked'];
 // actual logic of the cron
 function update_fully_booked() {
 	if (time() >= strtotime($end_date)) {
-		if (!$fully_booked == 1) {
+		if (!$fully_booked == 1) {	
 			update_post_meta( get_the_ID(), $fully_booked , 1 );
 		}
 	}
