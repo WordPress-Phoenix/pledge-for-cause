@@ -1,14 +1,27 @@
-<?php get_header();?>
+<?php
+//add_action( 'template_redirect', 'redirect' );
+//    function redirect (){
+    if(! is_user_logged_in() )
+    {
+        wp_redirect( home_url() );
+        exit();
+    } else {
 
-    <p><strong>Name:</strong> <?php the_title(); ?></p>
+        get_header();?>
 
-    <strong>Email:</strong><?php the_content(); ?>
+        <p><strong>Name:</strong> <?php the_title(); ?></p>
 
-    <?php  $pledge_amount = get_post_custom_values('annual_donation_pledge_amount');
-            $donation_id = get_post_custom_values('annual-donation-campaign-id');
-    ?>
-    <strong>Pledge Amount:</strong> $<?php echo $pledge_amount[0];?>
-    <strong>Campaign ID:</strong><?php echo $donation_id[0]; ?>
+        <strong>Email:</strong><?php the_content(); ?>
+
+        <?php  $pledge_amount = get_post_custom_values('annual_donation_pledge_amount');
+                $donation_id = get_post_custom_values('annual-donation-campaign-id');
+        ?>
+        <strong>Pledge Amount:</strong> $<?php echo $pledge_amount[0];?>
+        <strong>Campaign ID:</strong><?php echo $donation_id[0]; ?>
 
 
-<?php get_footer(); ?>
+         <?php get_footer();
+
+
+//    }
+}
