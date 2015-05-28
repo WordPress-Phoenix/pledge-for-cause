@@ -766,6 +766,8 @@ class sm_textarea extends sm_option {
 		$html .= "<label>$this->label</label>";
 		if ( $this->atts['disabled'] ) {
 			$disabled = 'disabled="disabled"';
+		} else {
+			$disabled = '';
 		}
 		$html .= "<textarea id=\"$this->id\" name=\"$this->id\" cols=\"50\" rows=\"10\" " . $disabled . ">" . stripslashes( $option_val ) . "</textarea>";
 		if ( $this->description ) {

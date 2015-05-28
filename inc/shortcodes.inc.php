@@ -49,6 +49,8 @@ class sc_shortcodes{
      */
     static function donation_form(){
 	?>
+
+        <!-- confirmation page submission as well as capturing form-post submission -->
 		<form action="/confirmation" method="post">
 		
 			<?php

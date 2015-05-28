@@ -79,6 +79,17 @@ function site_options(){
 		'label'          => 'What website would you like to share',
 	) ) );
 
+	//creates the Confirmation Email Page
+	$network_options_page->add_part( $section_network_email_confirm = new sm_section( 'network_confirmation_email', array (
+		'title' => 'Confirmation Email',
+	) ) );
+	$section_network_email_confirm->add_part( $network_email_subject = new sm_textfield( 'email_subject', array (
+		'label'          => 'Subject of Confirmation Email'
+	) ) );
+	$section_network_email_confirm->add_part( $network_email_body = new sm_textarea( 'email_body', array (
+		'label'          => 'Body of Confirmation Email'
+	) ) );
+
 	$network_options_page->build();
 }
 

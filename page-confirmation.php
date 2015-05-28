@@ -1,6 +1,14 @@
 <?php
-$email = $_POST['email'];
-echo $email;
+//building the email to send
+$email = sanitize_email($_POST['email']);
+$subject = get_custom_option('email_subject');
+$body = get_custom_option('email_body');
+
+//executes the email
+if (!wp_mail($email, $subject, $body)) {
+	echo 'something went wrong';
+}
+
 
 get_header(); ?>
 <div id="main" class="site-main">
@@ -12,22 +20,12 @@ get_header(); ?>
 	<div class="container">
 		<div id="primary" class="content-area">
 			<div id="content" class="site-content" role="main">
-				<!-- <!-- <?php get_template_part('parts/content','default.part'); ?> -->
-
-				<!-- #post -->
+				<?php get_template_part('parts/content','confirmation.part'); ?>
 				<div id="comments" class="comments-area">
-
-
 				</div>
-				<!-- #comments -->
-
 			</div>
-			<!-- #content -->
 		</div>
-		<!-- #primary -->
-
-		<!-- <?php get_sidebar('page'); ?> -->
-		<!-- #tertiary -->    </div>
+</div>
 
 
 </div><!-- #main -->
