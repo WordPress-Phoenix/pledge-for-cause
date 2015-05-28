@@ -49,7 +49,9 @@ class sc_shortcodes{
      */
     static function donation_form(){
 	?>
-		<form action="" method="post">
+
+        <!-- confirmation page submission as well as capturing form-post submission -->
+		<form action="/confirmation" method="post">
 		
 			<?php
 			$args = array(
@@ -75,14 +77,14 @@ class sc_shortcodes{
             <input type="hidden" name="meta_annual-donation-campaign-id" value="<?php echo $campaign_id; ?>" >
             <input type="hidden" name="annual-donation-pledge-option-id" value="24"/>
             <strong>First Name</strong>**
-            <input type="text" name="post_title" required>
+            <input type="text" name="first_name" required>
             <strong>Last Name</strong>**
-            <input type="text" name="post_title" required/>
+            <input type="text" name="last_name" required/>
             <p></p>
             <strong>Phone Number</strong>**
-            <input type="text" name="post_content" required/>
+            <input type="text" name="phone_number" required/>
             <strong>Email</strong>**
-            <input type="email" name="post_content" required/>
+            <input type="email" name="email" required/>
             <p></p>
             <strong>Donation</strong>**
             <label><em>please only check one donation</em></label>
