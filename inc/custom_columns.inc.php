@@ -3,8 +3,14 @@
 class sc_custom_columns {
 
     function __construct(){
+        //User table
         add_filter('manage_users_columns', array(__CLASS__,'test_modify_user_table'));
         add_filter('manage_users_custom_column', array(__CLASS__,'test_modify_user_table_row'), 10, 3);
+
+        //pledge option table
+        add_filter('manage_edit-pledge-options_columns', array(__CLASS__, 'modify_pledge_options_table'));
+        add_action( 'manage_pledge-options_posts_custom_column',array(__CLASS__, 'modify_pledge_options_table_row'), 10, 2 );
+
     }
 
     /**
@@ -33,6 +39,38 @@ class sc_custom_columns {
             default:
         }
 
+        return $return;
+    }
+
+
+    /**
+     * Created the custom column
+     */
+    static function modify_pledge_options_table($column) {
+        $column['pledge_option_is_active'] = 'Included in Campaign';
+
+        return $column;
+    }
+
+    /**
+     * Grabs the data to dynamically fill in the custom column
+     */
+    static function modify_pledge_options_table_row($column_name, $post_id)
+    {
+        global $post;
+
+        /* Get post meta. */
+        $terms = get_post_meta($post_id, 'pledge_option_is_active', true);
+
+        switch ($column_name) {
+
+            /* If displaying the 'article_category' column. */
+            case 'pledge_option_is_active' :
+                return $terms;
+                break;
+
+            default:
+        }
         return $return;
     }
 
