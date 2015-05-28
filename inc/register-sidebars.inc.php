@@ -21,5 +21,14 @@
             'before_title' => '<h2 class="widgettitle">',
             'after_title' => '</h2>',
         ));
+        // register_sidebar(array(
+        //     'name' => 'Snapshot Sidebar',
+        //     'id' => 'snapshot',
+        //     'description' => 'this provides a snapshot of the current campaign.',
+        //     'before_widget' => '<aside id="%1$s" class="blog-widget widget_text %2$s">',
+        //     'after_widget' => '</aside>',
+        //     'before_title' => '<h2 class="widgettitle">',
+        //     'after_title' => '</h2>',
+        // ));
     }
 //}
