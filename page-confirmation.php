@@ -6,7 +6,7 @@ $body = get_custom_option('email_body');
 
 //executes the email
 if (!wp_mail($email, $subject, $body)) {
-	echo 'something went wrong';
+	echo '<h2>something went wrong</h2>';
 }
 
 
@@ -24,6 +24,7 @@ get_header(); ?>
 				<div id="comments" class="comments-area">
 				</div>
 			</div>
+			<?php  get_sidebar('Snapshot'); ?>
 		</div>
 </div>
 
