@@ -51,7 +51,7 @@ class sc_shortcodes{
 	?>
 
         <!-- confirmation page submission as well as capturing form-post submission -->
-		<form action="/confirmation" method="post">
+		<form action="" method="post">
 		
 			<?php
 			$args = array(
