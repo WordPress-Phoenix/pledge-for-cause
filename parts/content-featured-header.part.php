@@ -27,7 +27,7 @@ if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_quer
 	<?php wp_reset_postdata(); ?>
 <?php else:
         if(current_user_can('manage_options')){
-            echo 'put what "page" you want <a href="http://local.wordpress.dev/wp-admin/options-general.php?page=network_settings#network-general">here</a>';
+            echo '<h2>put what "page" you want <a href="http://local.wordpress.dev/wp-admin/options-general.php?page=network_settings#network-general">here</a></h2>';
         }else{
             echo 'welcome';
         }
