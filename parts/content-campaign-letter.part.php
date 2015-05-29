@@ -7,10 +7,13 @@ $args = array(
 
 $myCampaigns = new WP_Query( $args );
 if( !$myCampaigns->have_posts() ) {
-    echo '<h2>There Are No Active Campaigns</h2>';
-    return;
-
-} else {
+    if(current_user_can('create_campaigns')) {
+        echo '<h2>click <a href="http://local.wordpress.dev/wp-admin/edit.php?post_type=campaigns">here</a> to create a campaign</h2>';
+    } else {
+        echo '<h2>There is no active campaign letter</h2>';
+        return;
+    }
+}else {
     $campaign = $myCampaigns->posts[0];
     setup_postdata($GLOBALS['post'] =& $campaign);
 }

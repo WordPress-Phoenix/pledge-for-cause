@@ -11,13 +11,13 @@ $args = array(
 
 $myCampaigns = new WP_Query( $args );
 if( !$myCampaigns->have_posts() ) {
-	echo '<h2>There Are No Active Campaigns</h2>';
-    $goal = 0;
-    $campaign_id = '';
-    $end_date = 0;
-    $start_date = 0;
-	return;
 
+        echo '<h2>There Are No Active Campaigns</h2>';
+        $goal = 0;
+        $campaign_id = '';
+        $end_date = 0;
+        $start_date = 0;
+        return;
 } else {
 	$campaign = $myCampaigns->posts[0];
 	setup_postdata($GLOBALS['post'] =& $campaign);

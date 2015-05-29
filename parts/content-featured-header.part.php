@@ -25,5 +25,11 @@ if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_quer
 	<?php endwhile; ?>
 	<!-- pagination here -->
 	<?php wp_reset_postdata(); ?>
-<?php else : ?>
+<?php else:
+        if(current_user_can('manage_options')){
+            echo 'put what "page" you want <a href="http://local.wordpress.dev/wp-admin/options-general.php?page=network_settings#network-general">here</a>';
+        }else{
+            echo 'welcome';
+        }
+    ?>
 <?php endif; ?>
