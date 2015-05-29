@@ -66,6 +66,13 @@ function sc_add_campaign_metaboxes () {
 		'campaigns', 
 		'side'
 	);
+    add_meta_box(
+        'campaign_pledge_metabox',
+        'Add Pledge Options to this campaign',
+        'sc_campaign_pledge_callback',
+        'campaigns',
+        'side'
+    );
 }
 add_action('add_meta_boxes', 'sc_add_campaign_metaboxes');
 
@@ -134,3 +141,15 @@ function sc_user_can_save_campaign($post_id, $nonce){
     //return info
 	return ! ($is_autosave || $is_revision) && $is_valid_nonce;
 }
+
+
+
+//function sc_campaign_pledge_callback($post){
+//
+//    //setup default form values and pull in any values found into
+//    wp_nonce_field( 'sc_metabox_nonce', 'sc_nonce_field');
+////    $values = never_empty_values($post->ID,['end-date','start-date','goal', 'is_fully_booked']);
+////    $is_active = get_post_meta($post->ID, 'is_active', true);
+//
+//
+//}

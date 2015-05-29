@@ -66,6 +66,7 @@ class sc_custom_columns {
 
             /* If displaying the 'article_category' column. */
             case 'pledge_option_is_active' :
+                echo $terms;
                 return $terms;
                 break;
 
