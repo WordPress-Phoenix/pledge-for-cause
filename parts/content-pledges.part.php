@@ -132,12 +132,12 @@ $pledges = get_posts( $arguments );
             /**
              * if there are not pledge-options, this is the message that will appear
              */
-                else : echo 'there are no pledges at this time'; ?>
-			<?php endif; ?>
+                        //if the user can manage options they'll be given a link to add/active pledge-options
+                else : if(current_user_can('manage_options')) {
+                    echo'<h2>there are no pledges at this time. to activate or create pledges go <a href="http://local.wordpress.dev/wp-admin/edit.php?post_type=pledge-options">here</a></h2>';
+                    }else{
+                        echo 'there are no pledges at this time';
+                    }
+                endif; ?>
 		</div>
-		<!--end .edd_price_options-->
-<!--        <div class="footer-social">-->
-<!--<!--            <a class="rss" href="http://saveachristmas.com/feed/"><i class="icon-rss"></i></a>-->
-<!--            <a href="#" class="btt"><i class="icon-up-open-big"></i></a>-->
-<!--        </div>-->
 	</div>
