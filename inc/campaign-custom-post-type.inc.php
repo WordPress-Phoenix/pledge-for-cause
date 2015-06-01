@@ -80,7 +80,7 @@ add_action('add_meta_boxes', 'sc_add_campaign_metaboxes');
 function sc_campaign_callback($post){
 	//setup default form values and pull in any values found into
 	wp_nonce_field( 'sc_metabox_nonce', 'sc_nonce_field');
-	$values = never_empty_values($post->ID,['end-date','start-date','goal', 'is_fully_booked']);
+	$values = never_empty_values($post->ID,['end-date','start-date','goal', 'is_fully_booked'], 'campaign_options');
 	$is_active = get_post_meta($post->ID, 'is_active', true);
 
 	//build form
@@ -101,8 +101,8 @@ function sc_campaign_callback($post){
 	echo $html;
 }
 
-function never_empty_values($post_id,$fields){
-	$values = maybe_unserialize(get_post_meta($post_id, 'campaign_options', true));
+function never_empty_values($post_id,$fields, $post_meta_array){
+	$values = maybe_unserialize(get_post_meta($post_id, $post_meta_array, true));
 	if(!$values) {
 		$values = [];
 	}
@@ -127,6 +127,8 @@ function sc_save_campaign_metabox_data($post_id){
 
 			
 		update_post_meta($post_id, 'is_active', esc_attr($_POST['is_active']));
+
+        update_post_meta($post_id, 'is_pledge_option_active', esc_attr($_POST['is_pledge_option_active']));
 	}
 }
 add_action('save_post', 'sc_save_campaign_metabox_data');
@@ -144,12 +146,52 @@ function sc_user_can_save_campaign($post_id, $nonce){
 
 
 
-//function sc_campaign_pledge_callback($post){
-//
-//    //setup default form values and pull in any values found into
-//    wp_nonce_field( 'sc_metabox_nonce', 'sc_nonce_field');
-////    $values = never_empty_values($post->ID,['end-date','start-date','goal', 'is_fully_booked']);
-////    $is_active = get_post_meta($post->ID, 'is_active', true);
-//
-//
+function sc_campaign_pledge_callback($post){
+
+    //setup default form values and pull in any values found into
+    wp_nonce_field( 'sc_metabox_nonce', 'sc_nonce_field');
+//    $values = never_empty_values($post->ID,['end-date','start-date','goal', 'is_fully_booked'], 'campaign_options');
+    $is_pledge_active = get_post_meta($post->ID, 'is_pledge_option_active', true);
+    /**
+     * grab all pledge-options that are chosen to be displayed
+     */
+    $arguments = array(
+        'post_type' => 'pledge-options',
+        'order' => 'asc',
+//        'meta_key' => 'pledge_option_is_active',
+//        'meta_value' => '1',
+
+    );
+    $the_query = query_posts($arguments);
+
+    if (have_posts()) : while (have_posts()) : the_post();
+        global $post;
+        $meta = get_post_meta($post->ID,'pledge_options', true);
+        $data_price = $meta['amount'];
+        $limit = $meta['limit'];
+        $html = '<div><input type="checkbox" name="is_pledge_option_active' . $data_price . '" value="1" '. (!empty($is_pledge_active) ? ' checked="checked" ' : null) .' /><label><strong>$' . $data_price . '</strong></label></div>';
+        echo $html;
+//        $sold = '';
+//        foreach ($pledges as $pledge){
+//            $pledge_value = get_post_meta($pledge->ID, 'annual_donation_pledge_amount', true);
+//            if ($pledge_value == $data_price) {
+//                $sold += $pledge_value;
+//            }
+//        }
+
+    endwhile;
+        endif;
+
+//    $values = never_empty_values($post->ID,['end-date','start-date','goal', 'is_fully_booked']);
+//    $is_active = get_post_meta($post->ID, 'is_active', true);
+
+
+}
+
+//function sc_save_campaign_pledges_metabox_data($post_id){
+//    if(sc_user_can_save_campaign($post_id,'sc_nonce_field' )){
+//        //Save Data
+//        update_post_meta($post_id, 'is_pledge_option_active', esc_attr($_POST['is_pledge_option_active']));
+//    }
 //}
+//add_action('save_post', 'sc_save_campaign_pledges_metabox_data');
