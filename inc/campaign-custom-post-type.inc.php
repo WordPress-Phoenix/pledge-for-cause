@@ -28,29 +28,29 @@ function create_custom_posttype()
 		'register_meta_box_cb'  => 'sc_add_campaign_metaboxes',
 		'supports'              => array( 'title', 'editor'),
 		'has_archive'           => true,
-        // 'capability_type'       => array('campaign','campaigns'),
-        // 'map_meta_cap'          => true,
-        // 'capabilities'          => array(
-        //         //meta_caps don't assign to roles
-        //         'edit_post'             => 'edit_campaign',
-        //         'delete_post'           => 'delete_campaign',
-        //         'read_post'             => 'read_campaign',
-        //         //primitive/meta
-        //         'create_posts'          => 'create_campaigns',
-        //         //primitive capabilities outside of meta
-        //         'publish_posts'         => 'publish_campaigns',
-        //         'edit_posts'            => 'edit_campaigns',
-        //         'edit_others_posts'     => 'edit_others_campaigns',
-        //         'read_private_posts'    => 'read_private_campaigns',
-        //         //primitive capabilities used inside of meta
-        //         'read'                  =>'read_campaigns',
-        //         'delete_posts'          => 'delete_campaigns',
-        //         'delete_others_posts'   =>'delete_others_campaigns',
-        //         'delete_private_posts'  => 'delete_private_campaigns',
-        //         'delete_published_posts'=> 'delete_published_campaigns',
-        //         'edit_private_posts'    => 'edit_private_campaigns',
-        //         'edit_published_posts'  => 'edit_published_campaigns'
-        // )
+         'capability_type'       => array('campaign','campaigns'),
+         'map_meta_cap'          => true,
+         'capabilities'          => array(
+                 //meta_caps don't assign to roles
+                 'edit_post'             => 'edit_campaign',
+                 'delete_post'           => 'delete_campaign',
+                 'read_post'             => 'read_campaign',
+                 //primitive/meta
+                 'create_posts'          => 'create_campaigns',
+                 //primitive capabilities outside of meta
+                 'publish_posts'         => 'publish_campaigns',
+                 'edit_posts'            => 'edit_campaigns',
+                 'edit_others_posts'     => 'edit_others_campaigns',
+                 'read_private_posts'    => 'read_private_campaigns',
+                 //primitive capabilities used inside of meta
+                 'read'                  =>'read_campaigns',
+                 'delete_posts'          => 'delete_campaigns',
+                 'delete_others_posts'   =>'delete_others_campaigns',
+                 'delete_private_posts'  => 'delete_private_campaigns',
+                 'delete_published_posts'=> 'delete_published_campaigns',
+                 'edit_private_posts'    => 'edit_private_campaigns',
+                 'edit_published_posts'  => 'edit_published_campaigns'
+         )
 	);
 	register_post_type('campaigns', $args);
 
