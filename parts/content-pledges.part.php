@@ -45,7 +45,7 @@ $date = strtotime($end_date);
 $arguments = array(
 	'numberposts' => -1,  // a -1 gets all the posts
 	'post_type'   => 'pledges',
-    'meta_key' => 'annual-donation-campaign-id',
+    'meta_key' => 'annual_donation_campaign_id',
     'meta_value' => $campaign_id,
 );
 $pledges = get_posts( $arguments );
@@ -77,9 +77,10 @@ $pledges = get_posts( $arguments );
 				$sold = '';
 				foreach ($pledges as $pledge){
 					$pledge_value = get_post_meta($pledge->ID, 'annual_donation_pledge_amount', true);
+//                    echo $pledge_value;
 					if ($pledge_value == $data_price) {
-						$sold += $pledge_value;
-					} 
+                        $sold += $pledge_value;
+                    }
 				}
 				if (!$sold == '') {
 					$sold = $sold / $data_price; 
