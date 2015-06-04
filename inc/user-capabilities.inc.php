@@ -14,7 +14,7 @@ class sc_roles_capabilities
      */
     static function add_custom_roles()
     {
-        $result = add_role(
+            add_role(
             'pledge_maker',
             __('Pledge Maker'),
             array(
@@ -134,6 +134,6 @@ class sc_roles_capabilities
 
     }
 }
-
+$user_capabilities = new sc_roles_capabilities();
 
 ?>
