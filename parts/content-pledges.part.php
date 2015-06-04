@@ -45,7 +45,7 @@ $date = strtotime($end_date);
 $arguments = array(
 	'numberposts' => -1,  // a -1 gets all the posts
 	'post_type'   => 'pledges',
-    'meta_key' => 'annual-donation-campaign-id',
+    'meta_key' => 'annual_donation_campaign_id',
     'meta_value' => $campaign_id,
 );
 $pledges = get_posts( $arguments );
