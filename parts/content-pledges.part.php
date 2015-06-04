@@ -82,7 +82,7 @@ $pledges = get_posts( $arguments );
 					} 
 				}
 				if (!$sold == '') {
-					$sold = $sold / $data_price; 
+					$sold = $sold / $data_price;
 				}
 
 				$remaining = $limit - $sold;

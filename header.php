@@ -1,4 +1,11 @@
-<?php //$a = get_role('pledge_maker');
+<?php
+$wp_roles = new WP_Roles();
+$names = $wp_roles->get_names();
+$wp_roles->remove_role("give_worker");
+$wp_roles->remove_role("give_manager");
+$wp_roles->remove_role("give_accountant");
+print_r($names);
+ //$a = get_role('pledge_maker');
 //print_r($a);
 //
 //

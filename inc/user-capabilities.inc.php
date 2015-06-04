@@ -6,7 +6,6 @@ class sc_roles_capabilities
 
         add_action('admin_init', array(__CLASS__,'add_custom_roles'));
         add_action('admin_init', array(__CLASS__,'add_full_cpt_capability'));
-//        add_action('admin_init', array(__CLASS__, 'add_editor_cpt_capabilities'));
     }
 
     /**
@@ -14,7 +13,7 @@ class sc_roles_capabilities
      */
     static function add_custom_roles()
     {
-        $result = add_role(
+        add_role(
             'pledge_maker',
             __('Pledge Maker'),
             array(
@@ -135,5 +134,6 @@ class sc_roles_capabilities
     }
 }
 
+$user_capabilities = new sc_roles_capabilities();
 
 ?>
